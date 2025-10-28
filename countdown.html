@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divya Dharma Yagya Diwas 2025 Countdown</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* CSS Reset and Basic Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+            min-height: 100vh;
+            text-align: center;
+            
+            /* --- CUSTOM BACKGROUND IMAGE --- */
+            /* --- Replace the URL below with your own image link --- */
+            background-image: url('https://images.unsplash.com/photo-1530982011887-3cc11cc85693?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1; /* Sits above the background but below content */
+        }
+        
+        /* Cloud Gate Animation */
+        .cloud-gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .cloud {
+            position: absolute;
+            background-color: #fff;
+            /* A complex CSS gradient to simulate fluffy clouds */
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(0,0,0,0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 40%, rgba(0,0,0,0.1) 0%, transparent 30%),
+                radial-gradient(circle at 50% 70%, rgba(0,0,0,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 25% 90%, rgba(0,0,0,0.1) 0%, transparent 35%);
+            transition: transform 3s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .top-cloud { top: 0; left: 0; width: 100%; height: 50.5%; }
+        .bottom-cloud { bottom: 0; left: 0; width: 100%; height: 50.5%; }
+        .left-cloud { top: 0; left: 0; width: 50.5%; height: 100%; z-index: 1001; }
+        .right-cloud { top: 0; right: 0; width: 50.5%; height: 100%; z-index: 1001; }
+        
+        body.reveal .top-cloud { transform: translateY(-100%); }
+        body.reveal .bottom-cloud { transform: translateY(100%); }
+        body.reveal .left-cloud { transform: translateX(-100%); }
+        body.reveal .right-cloud { transform: translateX(100%); }
+
+
+        /* Main Container */
+        .container {
+            position: relative; /* To ensure it's on top of the body::before overlay */
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Header Styling */
+        header { width: 100%; }
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 0, 0, 0.5);
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+        }
+
+        /* Countdown Timer Styling */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Glassmorphism Effect on Timer Boxes */
+        .value {
+            width: clamp(70px, 20vw, 150px);
+            height: clamp(70px, 20vw, 150px);
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 500;
+            
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px) saturate(120%);
+            -webkit-backdrop-filter: blur(12px) saturate(120%);
+            
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            
+            position: relative;
+            overflow: hidden; /* Crucial for the ticker animation */
+        }
+        
+        .flipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .flipper .current,
+        .flipper .next {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            line-height: clamp(70px, 20vw, 150px); /* Match height */
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .flipper .next {
+            transform: translateY(100%);
+        }
+
+        .flipper.tick .current {
+            transform: translateY(-100%);
+        }
+        
+        .flipper.tick .next {
+            transform: translateY(0);
+        }
+
+        .label {
+            font-size: clamp(0.8rem, 3vw, 1.2rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Footer Styling */
+        footer { width: 100%; padding-top: 40px; }
+        .social-links a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #fff;
+            transform: translateY(-3px) scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cloud Gate Reveal Animation -->
+    <div class="cloud-gate">
+        <div class="cloud top-cloud"></div>
+        <div class="cloud bottom-cloud"></div>
+        <div class="cloud left-cloud"></div>
+        <div class="cloud right-cloud"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Divya Dharma Yagya Diwas 2025</h1>
+        </header>
+
+        <main>
+            <div id="countdown">
+                <div class="time-unit">
+                    <div class="value">
+                        <div class="flipper" data-flipper="days">
+                            <div class="current">00</div><div class="next">00</div>
+                        </div>
+                    </div>
+                    <span class="label">Days</span>
+                </div>
+                <div class="time-unit">
+                    <div class="value">
+                        <div class="flipper" data-flipper="hours">
+                            <div class="current">00</div><div class="next">00</div>
+                        </div>
+                    </div>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="time-unit">
+                     <div class="value">
+                        <div class="flipper" data-flipper="minutes">
+                            <div class="current">00</div><div class="next">00</div>
+                        </div>
+                    </div>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="time-unit">
+                    <div class="value">
+                        <div class="flipper" data-flipper="seconds">
+                            <div class="current">00</div><div class="next">00</div>
+                        </div>
+                    </div>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Website"><i class="fas fa-globe"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const countdownDate = new Date("2025-11-04T09:00:00").getTime();
+
+            // Reveal clouds after a short delay
+            setTimeout(() => {
+                document.body.classList.add('reveal');
+            }, 500); // 0.5 second delay
+
+            const flippers = {
+                days: document.querySelector('[data-flipper="days"]'),
+                hours: document.querySelector('[data-flipper="hours"]'),
+                minutes: document.querySelector('[data-flipper="minutes"]'),
+                seconds: document.querySelector('[data-flipper="seconds"]'),
+            };
+
+            const updateValue = (flipper, value) => {
+                const formattedValue = String(value).padStart(2, '0');
+                const currentEl = flipper.querySelector('.current');
+                const nextEl = flipper.querySelector('.next');
+                
+                if (currentEl.textContent === formattedValue) return;
+
+                nextEl.textContent = formattedValue;
+                flipper.classList.add('tick');
+
+                flipper.addEventListener('transitionend', () => {
+                    currentEl.textContent = formattedValue;
+                    flipper.classList.remove('tick');
+                    // Reset next element's transform without transition
+                    nextEl.style.transition = 'none';
+                    nextEl.style.transform = 'translateY(100%)';
+                    // Force repaint
+                    nextEl.offsetHeight; 
+                    // Re-enable transition
+                    nextEl.style.transition = 'transform 0.5s ease-in-out';
+                }, { once: true });
+            };
+
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    document.getElementById('countdown').innerHTML = "<h2 style='font-size: 2rem; text-shadow: 0 0 10px black;'>The event has begun!</h2>";
+                    return;
+                }
+                
+                const values = {
+                    days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+                    hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                    minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                    seconds: Math.floor((distance % (1000 * 60)) / 1000)
+                };
+
+                updateValue(flippers.days, values.days);
+                updateValue(flippers.hours, values.hours);
+                updateValue(flippers.minutes, values.minutes);
+                updateValue(flippers.seconds, values.seconds);
+            };
+            
+            updateCountdown();
+            const interval = setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>
