@@ -28,9 +28,8 @@
             min-height: 100vh;
             text-align: center;
             
-            /* --- CUSTOM BACKGROUND IMAGE --- */
-            /* --- Replace the URL below with your own image link --- */
-            background-image: url('https://github.com/DevlopRishi/Countdown/blob/main/Picsart_25-10-23_19-21-15-791.png');
+            /* --- YOUR CUSTOM BACKGROUND IMAGE --- */
+            background-image: url('https://raw.githubusercontent.com/DevlopRishi/Countdown/refs/heads/main/Picsart_25-10-23_19-21-15-791.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -41,11 +40,11 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1; /* Sits above the background but below content */
+            background: rgba(0, 0, 0, 0.3); /* Slightly reduced overlay for the new image */
+            z-index: 1;
         }
         
-        /* Cloud Gate Animation */
+        /* Parallax Cloud Reveal Animation */
         .cloud-gate {
             position: fixed;
             top: 0;
@@ -59,30 +58,33 @@
 
         .cloud {
             position: absolute;
-            background-color: #fff;
-            /* A complex CSS gradient to simulate fluffy clouds */
-            background-image:
-                radial-gradient(circle at 15% 20%, rgba(0,0,0,0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 40%, rgba(0,0,0,0.1) 0%, transparent 30%),
-                radial-gradient(circle at 50% 70%, rgba(0,0,0,0.2) 0%, transparent 50%),
-                radial-gradient(circle at 25% 90%, rgba(0,0,0,0.1) 0%, transparent 35%);
-            transition: transform 3s cubic-bezier(0.65, 0, 0.35, 1);
+            /* Embedded transparent cloud image to keep it a single file */
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACgCAMAAACow3svAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJUExURQAAAP///////////////////31b/wUAAAAEdFJOUwBA////////////////////AFl6pAAAAB5JREFUeNrtwQEBAAAAgiD/r25IQAEAAAAAAAAAAAAAAAAA4GEAPuoAAWpyP8sAAAAASUVORK5CYII=');
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAReSURBVHhe7d1PcsMwEIXh/P8/nfA4sC4VpA4k/L3vYGf8t4Nmsm0MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADo1/U2m/X7M1/ftn3/bL/f53u/73y13m/z+l/9/vftLwL/lQAEIAABCEAAAhCAAAQggEAOgR/e/e+3u3/f/f61v79f/Qj4lwIQAACEIAABCEAAAhCAAARQJvD56s9CAAIQgAAEIAABCEAAAhCAQLICCEAAAhCAAAQgAAEIQAACEEAJAAEIQAACEIAABCAAAQhAAAISCSAAAQhAAAIQgAAEIAABCEAAJYAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEIAABVAAAhCAAAQgAAEIQAACEIAABEgmAAEIQAACEIAABCAAAQhAAAIUAAEIQAACEIAABCAAAQhAAAIkE0AAAhCAAAQgAAEIQAACEID/C/w+39/8t/q1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/AAyFwZ3p1sT3AAAAAElFTkSuQmCC');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: all ease-out;
+            opacity: 0.95;
         }
 
-        .top-cloud { top: 0; left: 0; width: 100%; height: 50.5%; }
-        .bottom-cloud { bottom: 0; left: 0; width: 100%; height: 50.5%; }
-        .left-cloud { top: 0; left: 0; width: 50.5%; height: 100%; z-index: 1001; }
-        .right-cloud { top: 0; right: 0; width: 50.5%; height: 100%; z-index: 1001; }
+        /* --- Individual cloud positioning and animation properties --- */
+        .cloud-1 { top: -20%; left: -20%; width: 60vw; height: 60vh; z-index: 1005; transition-duration: 4s; }
+        .cloud-2 { top: -10%; right: -25%; width: 70vw; height: 70vh; z-index: 1004; transform: scaleX(-1); transition-duration: 3.5s; }
+        .cloud-3 { bottom: -25%; left: -10%; width: 80vw; height: 80vh; z-index: 1003; transition-duration: 5s; }
+        .cloud-4 { bottom: -20%; right: -30%; width: 90vw; height: 90vh; z-index: 1002; transform: scaleX(-1); transition-duration: 4.5s; }
+        .cloud-5 { top: 20%; left: 15%; width: 50vw; height: 50vh; z-index: 1006; transition-duration: 3s; opacity: 0.8; }
         
-        body.reveal .top-cloud { transform: translateY(-100%); }
-        body.reveal .bottom-cloud { transform: translateY(100%); }
-        body.reveal .left-cloud { transform: translateX(-100%); }
-        body.reveal .right-cloud { transform: translateX(100%); }
+        /* --- Move clouds off-screen on reveal --- */
+        body.reveal .cloud-1 { transform: translate(-120%, -120%); opacity: 0; }
+        body.reveal .cloud-2 { transform: translate(130%, -110%) scaleX(-1); opacity: 0; }
+        body.reveal .cloud-3 { transform: translate(-110%, 140%); opacity: 0; }
+        body.reveal .cloud-4 { transform: translate(120%, 130%) scaleX(-1); opacity: 0; }
+        body.reveal .cloud-5 { transform: translateY(-150%); opacity: 0; }
 
 
         /* Main Container */
         .container {
-            position: relative; /* To ensure it's on top of the body::before overlay */
+            position: relative;
             z-index: 10;
             display: flex;
             flex-direction: column;
@@ -152,7 +154,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            line-height: clamp(70px, 20vw, 150px); /* Match height */
+            line-height: clamp(70px, 20vw, 150px);
             transition: transform 0.5s ease-in-out;
         }
         
@@ -171,11 +173,11 @@
         .label {
             font-size: clamp(0.8rem, 3vw, 1.2rem);
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-top: 15px;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
         }
 
         /* Footer Styling */
@@ -194,12 +196,13 @@
 </head>
 <body>
 
-    <!-- Cloud Gate Reveal Animation -->
+    <!-- Parallax Cloud Reveal Animation -->
     <div class="cloud-gate">
-        <div class="cloud top-cloud"></div>
-        <div class="cloud bottom-cloud"></div>
-        <div class="cloud left-cloud"></div>
-        <div class="cloud right-cloud"></div>
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="cloud cloud-4"></div>
+        <div class="cloud cloud-5"></div>
     </div>
 
     <div class="container">
@@ -284,12 +287,9 @@
                 flipper.addEventListener('transitionend', () => {
                     currentEl.textContent = formattedValue;
                     flipper.classList.remove('tick');
-                    // Reset next element's transform without transition
                     nextEl.style.transition = 'none';
                     nextEl.style.transform = 'translateY(100%)';
-                    // Force repaint
                     nextEl.offsetHeight; 
-                    // Re-enable transition
                     nextEl.style.transition = 'transform 0.5s ease-in-out';
                 }, { once: true });
             };
